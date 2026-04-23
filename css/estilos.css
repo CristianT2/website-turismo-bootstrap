@@ -1,111 +1,167 @@
-/* --- PALETA CORREGIDA PARA CONTRASTE --- */
 :root {
-  /* Azul Medianoche para el fondo: hace resaltar el turquesa y blanco */
   --nav-midnight: #0a192f;    
-  --accent-turquesa: #2a9d8f; /* Este es el turquesa del logo */
-  --accent-naranja: #e76f51;  /* El naranja del logo y la línea inferior */
-  --btn-warning: #ffb703;     /* Amarillo del simulador */
+  --accent-turquesa: #2a9d8f; 
+  --accent-naranja: #e76f51;  
+  --btn-warning: #ffb703;     
   --nav-height: 115px;
+  --transition-smooth: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
 }
 
-/* Modo Claro: Fondo oscuro profundo para resaltar el logo */
 [data-bs-theme="light"] {
   --nav-bg: var(--nav-midnight);
   --nav-link-color: #ffffff;
   --dropdown-bg: #ffffff;
   --dropdown-text: #0a192f;
+  --body-bg: #ffffff;
 }
 
-/* Modo Oscuro: Negro total */
 [data-bs-theme="dark"] {
   --nav-bg: #000000;
   --nav-link-color: #f0f0f0;
   --dropdown-bg: #1a1a1a;
   --dropdown-text: #f0f0f0;
+  --body-bg: #000000;
 }
 
-/* --- ESTILOS DEL NAVBAR --- */
+/* NAVBAR */
 .navbar-custom {
   background-color: var(--nav-bg) !important;
   min-height: var(--nav-height);
-  border-bottom: 4px solid var(--accent-naranja); /* Resalta contra el azul */
+  border-bottom: 4px solid var(--accent-naranja);
   display: flex;
   align-items: center;
   transition: all 0.4s ease;
 }
 
-/* Links: Blancos por defecto */
 .navbar-custom .nav-link {
   color: var(--nav-link-color) !important;
   font-weight: 600;
   font-size: 1.1rem;
   text-transform: uppercase;
   letter-spacing: 1px;
-  transition: all 0.3s ease;
+  transition: var(--transition-smooth);
 }
 
-/* --- AQUÍ ESTÁ EL CONTRASTE --- */
-/* Cuando pasas el mouse, el link se vuelve Turquesa (como el logo) */
-.navbar-custom .nav-link:hover {
+.navbar-custom .nav-link:hover,
+.navbar-custom .nav-link.active {
   color: var(--accent-turquesa) !important;
   transform: translateY(-3px);
 }
 
-/* El link activo se queda en Turquesa */
-.navbar-custom .nav-link.active {
-  color: var(--accent-turquesa) !important;
-}
-
-/* Logo: Ahora JUJUY (Blanco) y TURISMO (Turquesa) resaltan sobre el azul */
 .logo-parte-1 { color: #ffffff; }
 .logo-parte-2 { color: var(--accent-turquesa); }
 .logo-sub { color: var(--accent-naranja); }
 
-/* El botón amarillo sigue siendo el rey del contraste */
 .btn-accent {
   background-color: var(--btn-warning) !important;
   color: #0a192f !important;
   border: none;
   font-weight: 800 !important;
   box-shadow: 0 4px 15px rgba(255, 183, 3, 0.4);
+  transition: var(--transition-smooth);
 }
 
-/* --- AJUSTE BOTÓN HAMBURGUESA --- */
+.btn-accent:hover {
+  transform: scale(1.05);
+  background-color: #ffca2c !important;
+}
 
-/* En Modo Claro (Fondo Azul Medianoche) -> Icono Blanco */
 [data-bs-theme="light"] .navbar-toggler-icon {
     filter: invert(1); 
 }
 
-/* En Modo Oscuro (Fondo Negro) -> Icono Turquesa para que combine con el Logo */
 [data-bs-theme="dark"] .navbar-toggler-icon {
-    /* Este filtro convierte el negro en el turquesa (#2a9d8f) del logo */
     filter: invert(53%) sepia(88%) saturate(352%) hue-rotate(125deg) brightness(91%) contrast(85%);
 }
 
-/* Efecto al presionar: que no se vea el borde azul de Bootstrap */
 .navbar-toggler:focus {
     outline: none;
     box-shadow: none;
 }
 
-/* --- ESTILOS DEL FOOTER --- */
+/* HERO SECTION */
+.hero-section {
+    min-height: 60vh;
+}
+
+@media (min-width: 992px) {
+    .hero-section { min-height: 85vh; }
+}
+
+#hero-title, #hero-subtitle {
+    text-shadow: 2px 4px 12px rgba(0, 0, 0, 0.9);
+}
+
+/* COMPONENTES Y CARDS */
+.text-turquesa { color: var(--accent-turquesa) !important; }
+.bg-turquesa { background-color: var(--accent-turquesa) !important; }
+.text-light-muted { color: #b2bec3; }
+.tracking-widest { letter-spacing: 3px; text-transform: uppercase; }
+
+.card-hover {
+    transition: var(--transition-smooth);
+}
+
+.card-hover:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 30px rgba(0,0,0,0.2) !important;
+}
+
+.img-zoom {
+    transition: transform 0.6s ease;
+}
+
+.card-hover:hover .img-zoom {
+    transform: scale(1.1);
+}
+
+.btn-outline-turquesa {
+    color: var(--accent-turquesa);
+    border-color: var(--accent-turquesa);
+    transition: var(--transition-smooth);
+}
+
+.btn-outline-turquesa:hover {
+    background-color: var(--accent-turquesa);
+    color: white;
+}
+
+/* CARRUSEL */
+.custom-carousel-btn {
+    width: 50px;
+    height: 50px;
+    background-color: rgba(0, 0, 0, 0.3);
+    border-radius: 50%;
+    border: none;
+    transition: var(--transition-smooth);
+}
+
+.custom-carousel-btn:hover {
+    background-color: var(--accent-turquesa);
+}
+
+[data-bs-theme="light"] .carousel-control-prev-icon,
+[data-bs-theme="light"] .carousel-control-next-icon {
+    filter: invert(1);
+}
+
+/* FOOTER */
 .footer-custom {
-  background-color: var(--nav-midnight) !important; /* Mismo color que el Header */
+  background-color: var(--nav-midnight) !important;
   color: #ffffff;
   border-top: 4px solid var(--accent-naranja);
 }
 
-.text-light-muted {
-  color: #b2bec3;
+[data-bs-theme="dark"] .footer-custom {
+  background-color: #000000 !important;
 }
 
-/* Botón del Formulario del Footer */
 .btn-accent-footer {
   background-color: var(--accent-turquesa);
   color: white;
   border: none;
   font-weight: bold;
+  transition: var(--transition-smooth);
 }
 
 .btn-accent-footer:hover {
@@ -113,34 +169,27 @@
   color: white;
 }
 
-/* --- SPRITE CSS ACTUALIZADO PARA TU IMAGEN --- */
+/* SPRITE CSS */
 .social-sprite-container {
   display: flex;
-  gap: 20px; /* Un poco más de espacio entre iconos */
+  gap: 20px;
 }
 
 .sprite-icon {
-  width: 50px;  /* El tamaño visible de cada cuadradito */
-  height: 50px; 
-  background-image: url('../images/logos.png'); /* Ruta a tu imagen */
-  background-size: 150px 50px; /* Le decimos el tamaño total de la tira (3 iconos de 50px) */
+  width: 50px;
+  height: 50px;
+  background-image: url('../images/logos.png');
+  background-size: 150px 50px;
   background-repeat: no-repeat;
   display: inline-block;
   transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
-/* Efecto Hover: Elevar y girar suavemente */
 .sprite-icon:hover {
   transform: translateY(-8px) rotate(5deg);
-  filter: drop-shadow(0 4px 10px rgba(0,0,0,0.3)); /* Sombra para dar profundidad */
+  filter: drop-shadow(0 4px 10px rgba(0,0,0,0.3));
 }
 
-/* --- AQUÍ ESTÁ EL REQUISITO DEL TP: background-position --- */
-.icon-fb { background-position: 0px 0px; }       /* Primer icono: Facebook */
-.icon-tw { background-position: -50px 0px; }     /* Segundo icono: Twitter (corremos -50px) */
-.icon-ig { background-position: -100px 0px; }    /* Tercer icono: Instagram (corremos -100px) */
-
-/* Ajuste Modo Oscuro Footer */
-[data-bs-theme="dark"] .footer-custom {
-  background-color: #000000 !important;
-}
+.icon-fb { background-position: 0px 0px; }
+.icon-tw { background-position: -50px 0px; }
+.icon-ig { background-position: -100px 0px; }

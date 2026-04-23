@@ -14,6 +14,150 @@
 <body>
     <div id="header-placeholder"></div>
 
+    <main>
+        <section
+            class="position-relative overflow-hidden w-100 d-flex align-items-center justify-content-center text-bg-dark"
+            style="min-height: 85vh;">
+            <video autoplay muted loop playsinline class="position-absolute w-100 h-100 object-fit-cover top-0 start-0"
+                style="z-index: 1;">
+                <source src="images/videoJujuy.mp4" type="video/mp4">
+            </video>
+            <div class="position-absolute top-0 start-0 w-100 h-100 bg-dark opacity-50" style="z-index: 2;"></div>
+            <div class="container position-relative text-center py-5" style="z-index: 3;">
+                <h1 class="display-1 fw-bold mb-3 text-white" id="hero-title"
+                    style="display:none; text-shadow: 2px 2px 10px rgba(0,0,0,0.8);">
+                    JUJUY <span class="text-turquesa">ENERGÍA VIVA</span>
+                </h1>
+                <p class="lead fs-2 mb-5 text-white-50" id="hero-subtitle"
+                    style="display:none; text-shadow: 1px 1px 5px rgba(0,0,0,0.8);">
+                    Descubrí paisajes que parecen de otro planeta.
+                </p>
+                <div id="hero-btn" style="display:none;">
+                    <a href="#destinos" class="btn btn-accent btn-lg rounded-pill px-5 shadow-lg fw-bold">Explorar
+                        Destinos</a>
+                </div>
+            </div>
+        </section>
+
+        <section id="destinos" class="py-5 bg-body text-body">
+            <div class="container">
+                <div class="text-center mb-5">
+                    <h2 class="fw-bold display-5">Destinos <span class="text-turquesa">Imperdibles</span></h2>
+                    <p class="text-uppercase small tracking-widest opacity-50">Explora la magia del norte</p>
+                    <div class="mx-auto bg-turquesa" style="height: 4px; width: 60px;"></div>
+                </div>
+
+                <div class="row g-4">
+                    <div class="col-lg-4 col-md-6">
+                        <div class="card h-100 border-0 shadow card-hover bg-body-tertiary">
+                            <div class="overflow-hidden rounded-top">
+                                <img src="images/purmamarca.webp" class="card-img-top img-zoom" alt="Purmamarca">
+                            </div>
+                            <div class="card-body p-4 text-center">
+                                <h5 class="card-title fw-bold text-turquesa">Purmamarca</h5>
+                                <p class="card-text small opacity-75">El Cerro de los Siete Colores y su feria
+                                    artesanal.</p>
+                                <a href="#" class="btn btn-outline-turquesa rounded-pill btn-sm px-4">Ver Guía</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-6">
+                        <div class="card h-100 border-0 shadow card-hover bg-body-tertiary">
+                            <div class="overflow-hidden rounded-top">
+                                <img src="images/salinas.webp" class="card-img-top img-zoom" alt="Salinas Grandes">
+                            </div>
+                            <div class="card-body p-4 text-center">
+                                <h5 class="card-title fw-bold text-turquesa">Salinas Grandes</h5>
+                                <p class="card-text small opacity-75">Un desierto blanco bajo el cielo azul de la Puna.
+                                </p>
+                                <a href="#" class="btn btn-outline-turquesa rounded-pill btn-sm px-4">Ver Guía</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-6">
+                        <div class="card h-100 border-0 shadow card-hover bg-body-tertiary">
+                            <div class="overflow-hidden rounded-top">
+                                <img src="images/hornocal.jpg" class="card-img-top img-zoom" alt="Hornocal">
+                            </div>
+                            <div class="card-body p-4 text-center">
+                                <h5 class="card-title fw-bold text-turquesa">Hornocal</h5>
+                                <p class="card-text small opacity-75">El imponente cerro de los 14 colores de Humahuaca.
+                                </p>
+                                <a href="#" class="btn btn-outline-turquesa rounded-pill btn-sm px-4">Ver Guía</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="py-5" style="background-color: var(--nav-midnight);">
+            <div class="container text-white">
+                <div class="text-center mb-5">
+                    <h2 class="fw-bold display-5">Nuestra <span class="text-turquesa">Trayectoria</span></h2>
+                    <p class="text-uppercase small tracking-widest text-light-muted">Jujuy en números</p>
+                    <div class="mx-auto bg-turquesa" style="height: 4px; width: 60px;"></div>
+                </div>
+                <div class="row g-4 text-center mt-4">
+                    <div class="col-md-4">
+                        <div class="p-3">
+                            <i class="bi bi-people-fill fs-1 text-turquesa mb-2"></i>
+                            <h2 class="display-4 fw-bold counter text-white" data-target="2500">0</h2>
+                            <p class="text-uppercase small fw-bold text-light-muted">Turistas por mes</p>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="p-3">
+                            <i class="bi bi-map-fill fs-1 text-turquesa mb-2"></i>
+                            <h2 class="display-4 fw-bold counter text-white" data-target="150">0</h2>
+                            <p class="text-uppercase small fw-bold text-light-muted">Guías Certificados</p>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="p-3">
+                            <i class="bi bi-star-fill fs-1 text-turquesa mb-2"></i>
+                            <h2 class="display-4 fw-bold counter text-white" data-target="22">0</h2>
+                            <p class="text-uppercase small fw-bold text-light-muted">Años de Trayectoria</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="py-5 bg-body-secondary text-body overflow-hidden">
+            <div class="container text-center">
+                <div class="text-center mb-5">
+                    <h2 class="fw-bold display-5">Nuestras <span class="text-turquesa">Experiencias</span></h2>
+                    <p class="text-uppercase small tracking-widest opacity-50">Lo que dicen los viajeros</p>
+                    <div class="mx-auto bg-turquesa" style="height: 4px; width: 60px;"></div>
+                </div>
+
+                <div id="testiCarousel" class="carousel slide" data-bs-ride="carousel">
+                    <div class="carousel-inner pb-5">
+                        <div class="carousel-item active">
+                            <p class="fs-2 font-italic px-lg-5">"Jujuy es un lugar mágico. La atención fue excelente."
+                            </p>
+                            <span class="fw-bold text-turquesa">— Marina, Buenos Aires</span>
+                        </div>
+                        <div class="carousel-item">
+                            <p class="fs-2 font-italic px-lg-5">"Increíble la seguridad que brindan para planificar el
+                                viaje."</p>
+                            <span class="fw-bold text-turquesa">— Lucas, San Pedro</span>
+                        </div>
+                    </div>
+
+                    <button class="carousel-control-prev custom-carousel-btn" type="button"
+                        data-bs-target="#testiCarousel" data-bs-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    </button>
+                    <button class="carousel-control-next custom-carousel-btn" type="button"
+                        data-bs-target="#testiCarousel" data-bs-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    </button>
+                </div>
+            </div>
+        </section>
+    </main>
 
     <div id="footer-placeholder"></div>
 
@@ -27,7 +171,7 @@
     <script src="js/scripts.js"></script>
     <script>
         // Esta función carga los componentes externos
-        $(function(){
+        $(function () {
             $("#header-placeholder").load("components/header.html");
             $("#footer-placeholder").load("components/footer.html");
         });

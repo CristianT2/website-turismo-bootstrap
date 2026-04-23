@@ -27,3 +27,23 @@ $(document).ready(function() {
         }
     }
 });
+
+$(document).ready(function () {
+    // Animaciones del Hero
+    $("#hero-title").fadeIn(1500);
+    $("#hero-subtitle").delay(800).fadeIn(1000);
+    $("#hero-btn").delay(1600).slideDown(800);
+
+    // Animación de Contadores
+    $('.counter').each(function () {
+        $(this).prop('Counter', 0).animate({
+            Counter: $(this).data('target')
+        }, {
+            duration: 3500,
+            easing: 'swing',
+            step: function (now) {
+                $(this).text(Math.ceil(now).toLocaleString());
+            }
+        });
+    });
+});
