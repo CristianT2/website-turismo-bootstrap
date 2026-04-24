@@ -77,4 +77,95 @@ $(document).ready(function () {
         $container.find('.star').removeClass('active-star');
         $(this).addClass('active-star').prevAll().addClass('active-star');
     });
+
+    // --- 4. CONTACTO (VALIDACIÓN Y ENVÍO) ---
+
+    // Validación en tiempo real para el Nombre
+    $(document).ready(function () {
+
+        // Validar Nombre y Apellido (Solo letras, mín 3)
+        $('#nombre, #apellido').on('input', function () {
+            const regex = /^[A-Za-z\sÁéíóúÁÉÍÓÚñÑ]{3,}$/;
+            if (regex.test($(this).val())) {
+                $(this).addClass('is-valid').removeClass('is-invalid');
+            } else {
+                $(this).addClass('is-invalid').removeClass('is-valid');
+            }
+        });
+
+        // Validar Email
+        $('#email').on('input', function () {
+            const emailReg = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (emailReg.test($(this).val())) {
+                $(this).addClass('is-valid').removeClass('is-invalid');
+            } else {
+                $(this).addClass('is-invalid').removeClass('is-valid');
+            }
+        });
+
+        // Validar Teléfono (Solo números y espacios)
+        $('#tel').on('input', function () {
+            const telReg = /^[0-9\s\-\+]{7,}$/;
+            if (telReg.test($(this).val())) {
+                $(this).addClass('is-valid').removeClass('is-invalid');
+            } else {
+                $(this).addClass('is-invalid').removeClass('is-valid');
+            }
+        });
+
+        // Contador de caracteres para Mensaje
+        $('#mensaje').on('input', function () {
+            const len = $(this).val().length;
+            $('#charCount').text(len + " / 200 caracteres");
+
+            if (len > 0) {
+                $(this).addClass('is-valid').removeClass('is-invalid');
+            } else {
+                $(this).addClass('is-invalid').removeClass('is-valid');
+            }
+
+            if (len > 200) {
+                $(this).val($(this).val().substring(0, 200));
+            }
+        });
+
+        // Manejo de envío con Spinner y Modal
+        $('#contactForm').on('submit', function (e) {
+            e.preventDefault();
+
+            // Verificación final
+            const formValido = $('#contactForm')[0].checkValidity();
+            const errores = $('.is-invalid').length;
+
+            if (!formValido || errores > 0) {
+                alert("Por favor, completa todos los campos correctamente.");
+                return;
+            }
+
+            // Interfaz de carga
+            const $btn = $('#btnSubmit');
+            const $spinner = $('#btnSpinner');
+            const $text = $('#btnText');
+
+            $btn.prop('disabled', true);
+            $text.text('Procesando...');
+            $spinner.removeClass('d-none');
+
+            // Simulación de envío
+            setTimeout(function () {
+                $btn.prop('disabled', false);
+                $text.text('Enviar Mensaje');
+                $spinner.addClass('d-none');
+
+                // Disparar Modal de confirmación
+                const modalConfirm = new bootstrap.Modal(document.getElementById('confirmModal'));
+                modalConfirm.show();
+
+                // Limpiar
+                $('#contactForm')[0].reset();
+                $('.form-control, .form-select').removeClass('is-valid');
+                $('#charCount').text("0 / 200 caracteres");
+            }, 2500);
+        });
+    });
 });

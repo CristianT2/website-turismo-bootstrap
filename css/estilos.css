@@ -388,3 +388,43 @@
     font-weight: bold;
     margin-top: 15px;
 }
+
+/* --- ESTILOS DEL FORMULARIO --- */
+.contact-card {
+    border-radius: 20px;
+    transition: all 0.3s ease;
+    border: 1px solid rgba(128, 128, 128, 0.2);
+}
+
+/* Ajuste para MODO CLARO */
+[data-bs-theme="light"] .contact-card {
+    background-color: #ffffff; /* Blanco puro sobre fondo grisáceo */
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+}
+
+/* Ajuste para MODO OSCURO */
+[data-bs-theme="dark"] .contact-card {
+    background-color: #1e2125; /* Gris más claro que el fondo negro de Fedora */
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Estilo de los inputs para que no se pierdan */
+.form-control, .form-select {
+    background-color: var(--bs-body-bg);
+    border: 1px solid rgba(128, 128, 128, 0.4);
+}
+
+/* Color del botón Turquesa */
+.btn-turquesa {
+    background-color: #2a9d8f;
+    color: white;
+    border: none;
+    font-weight: 600;
+}
+
+.btn-turquesa:hover {
+    background-color: #21867a;
+    color: white;
+    transform: translateY(-2px);
+}
