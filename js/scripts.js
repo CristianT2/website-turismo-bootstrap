@@ -47,3 +47,40 @@ $(document).ready(function () {
         });
     });
 });
+
+$(document).ready(function() {
+    
+    // FILTROS DINÁMICOS - GALERÍA
+    $('#filter-system button').on('click', function() {
+        // Manejo de UI: Clases activas
+        $('#filter-system button').removeClass('active');
+        $(this).addClass('active');
+
+        const seleccion = $(this).attr('data-region');
+
+        if (seleccion === 'todos') {
+            // Muestra todos con animación de jQuery
+            $('.dest-card').show(500);
+        } else {
+            // Oculta todos primero
+            $('.dest-card').hide(300);
+            
+            // Filtra y muestra solo la categoría elegida
+            $('.dest-card').filter('.' + seleccion).show(500);
+        }
+    });
+
+    // EFECTO ZOOM CON JQUERY
+    // Se complementa con el CSS para máxima suavidad
+    $('.dest-card').on('mouseenter', function() {
+        $(this).find('img').css('transform', 'scale(1.15)');
+    }).on('mouseleave', function() {
+        $(this).find('img').css('transform', 'scale(1)');
+    });
+
+    // OPCIONAL: Efecto suave de scroll para la tabla
+    $('.table-responsive').on('scroll', function() {
+        console.log('El usuario está explorando los precios');
+    });
+
+});
