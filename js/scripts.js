@@ -168,4 +168,24 @@ $(document).ready(function () {
             }, 2500);
         });
     });
+
+    $(document).ready(function () {
+        // 1. Inicialización de Tooltips (Bootstrap + jQuery)
+        var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'));
+        tooltipTriggerList.map(function (el) {
+            return new bootstrap.Tooltip(el);
+        });
+
+        // 2. Hover Dinámico por Columna (jQuery puro)
+        $('#preciosTabla td').on('mouseenter', function () {
+            var idx = $(this).index();
+            if (idx > 0) { // No aplicar a la columna de descripciones
+                $('#preciosTabla tr').each(function () {
+                    $(this).find('td, th').eq(idx).addClass('columna-activa');
+                });
+            }
+        }).on('mouseleave', function () {
+            $('#preciosTabla td, #preciosTabla th').removeClass('columna-activa');
+        });
+    });
 });

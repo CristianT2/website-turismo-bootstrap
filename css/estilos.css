@@ -428,3 +428,70 @@
     color: white;
     transform: translateY(-2px);
 }
+
+/* Estilos para Tabla de Precios Punto 5 */
+.bg-turquesa { 
+    background-color: #2a9d8f !important; 
+    color: white !important; 
+}
+
+.text-turquesa { 
+    color: #2a9d8f !important; 
+}
+
+.columna-activa {
+    background-color: rgba(42, 157, 143, 0.12) !important;
+    transition: background-color 0.2s ease;
+}
+
+[data-bs-theme="dark"] .columna-activa {
+    color: #ffffff !important;
+}
+
+[data-bs-theme="dark"] .columna-activa .text-turquesa {
+    color: #2a9d8f !important;
+}
+
+.table-dark th {
+    color: white !important;
+}
+
+.columna-activa .btn-outline-info,
+.columna-activa .btn-outline-warning {
+    background-color: transparent !important;
+}
+
+[data-bs-theme="dark"] .btn-outline-info { 
+    color: #0dcaf0; 
+    border-color: #0dcaf0; 
+}
+
+[data-bs-theme="dark"] .btn-outline-warning { 
+    color: #ffc107; 
+    border-color: #ffc107; 
+}
+
+.table-responsive {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+}
+
+.table-responsive::-webkit-scrollbar { 
+    height: 8px; 
+}
+
+.table-responsive::-webkit-scrollbar-thumb {
+    background: #2a9d8f;
+    border-radius: 10px;
+}
+
+.tooltip-inner {
+    background-color: #2a9d8f !important;
+    font-weight: 500;
+    padding: 10px;
+    border-radius: 8px;
+}
+
+.table-secondary {
+    --bs-table-bg: rgba(128, 128, 128, 0.1);
+}
