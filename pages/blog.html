@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog Turistico</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="../css/estilos.css">
+</head>
+
+<body>
+    <div id="header-placeholder"></div>
+
+    <main class="container py-5">
+        <div class="text-center mb-5">
+            <h2 class="display-5 fw-bold">Crónicas de<span class="text-turquesa">Jujuy</span></h2>
+        </div>
+
+        <div class="blog-filters d-flex justify-content-center flex-wrap gap-2 mb-5">
+            <button class="btn btn-outline-turquesa active m-1 rounded-pill px-4 btn-filter" data-filter="all">Todos</button>
+            <button class="btn btn-outline-turquesa active m-1 rounded-pill px-4 btn-filter" data-filter="aventura">Aventura</button>
+            <button class="btn btn-outline-turquesa active m-1 rounded-pill px-4 btn-filter" data-filter="cultura">Cultura</button>
+            <button class="btn btn-outline-turquesa active m-1 rounded-pill px-4 btn-filter" data-filter="gastronomia">Gastronomía</button>
+        </div>
+
+        <div class="blog-grid">
+            <article class="post featured aventura">
+                <div class="post-img-container landscape">
+                    <img src="../images/hornocal.jpg" alt="Hornocal">
+                </div>
+                <div class="post-content">
+                    <span class="tag">Aventura</span>
+                    <h2>Serranías del Hornocal: El gigante de 14 colores</h2>
+                    <p>Un viaje a 4.761 metros sobre el nivel del mar que desafía los sentidos.</p>
+                    <a href="#" class="read-more">Leer crónica →</a>
+                </div>
+            </article>
+
+            <article class="post cultura tall">
+                <div class="post-img-container img-fluid">
+                    <img src="../images/bajadadiablos.jpg" alt="Tilcara">
+                </div>
+                <div class="post-content">
+                    <span class="tag">Cultura</span>
+                    <h3>Diablos en la Quebrada</h3>
+                    <p>La bajada del Carnaval de Tilcara contada desde adentro.</p>
+                </div>
+            </article>
+
+            <article class="post gastronomia">
+                <div class="post-img-container small">
+                    <img src="../images/empanadas.jpeg" alt="Empanadas">
+                </div>
+                <div class="post-content">
+                    <span class="tag">Gastronomía</span>
+                    <h3>El Secreto de la Empanada Jujeña</h3>
+                    <p>Carne cortada a cuchillo, papa y el toque jujeño.</p>
+                </div>
+            </article>
+
+            <article class="post aventura">
+                <div class="post-img-container small">
+                    <img src="../images/salinas.webp" alt="Salinas Grandes">
+                </div>
+                <div class="post-content">
+                    <span class="tag">Aventura</span>
+                    <h3>Salinas Grandes: El Desierto Blanco</h3>
+                    <p>Trekking y fotografías surrealistas en la Puna.</p>
+                </div>
+            </article>
+
+            <article class="post cultura span-2">
+                <div class="post-img-container landscape">
+                    <img src="../images/purmamarca.webp" alt="Purmamarca">
+                </div>
+                <div class="post-content">
+                    <span class="tag">Cultura</span>
+                    <h3>Música Ancestral en los Cerros</h3>
+                    <p>Entrevista a los copleros que mantienen viva la tradición.</p>
+                </div>
+            </article>
+
+            <article class="post gastronomia">
+                <div class="post-img-container small">
+                    <img src="../images/vinos.jpg" alt="Vinos">
+                </div>
+                <div class="post-content">
+                    <span class="tag">Gastronomía</span>
+                    <h3>La Ruta del Vino de Altura</h3>
+                    <p>Visitamos las bodegas más altas del mundo.</p>
+                </div>
+            </article>
+
+            <article class="post aventura">
+                <div class="post-img-container small">
+                    <img src="../images/pucara.jpg" alt="Trekking">
+                </div>
+                <div class="post-content">
+                    <span class="tag">Aventura</span>
+                    <h3>Trekking al Pucará</h3>
+                    <p>Recorrido histórico por la antigua fortaleza omaguaca.</p>
+                </div>
+            </article>
+
+            <article class="post featured cultura">
+                <div class="post-img-container landscape">
+                    <img src="../images/exodo.jpg" alt="Éxodo Jujeño">
+                </div>
+                <div class="post-content">
+                    <span class="tag">Cultura</span>
+                    <h2>Recordando el Éxodo Jujeño</h2>
+                    <p>El sacrificio de un pueblo para asegurar la independencia.</p>
+                </div>
+            </article>
+
+            <article class="post gastronomia">
+                <div class="post-img-container small">
+                    <img src="../images/humita.jpeg" alt="Humita">
+                </div>
+                <div class="post-content">
+                    <span class="tag">Gastronomía</span>
+                    <h3>El Duelo de la Humita</h3>
+                    <p>¿Dulce o Salada? Recorremos Humahuaca buscando la respuesta.</p>
+                </div>
+            </article>
+
+            <article class="post cultura tall">
+                <div class="post-img-container portrait">
+                    <img src="../images/artesanias.jpg" alt="Artesanías">
+                </div>
+                <div class="post-content">
+                    <span class="tag">Cultura</span>
+                    <h3>Artesanías con Identidad</h3>
+                    <p>El tejido jujeño, una tradición de generaciones.</p>
+                </div>
+            </article>
+
+            <article class="post gastronomia">
+                <div class="post-img-container small">
+                    <img src="../images/tamales.jpeg" alt="Tamales">
+                </div>
+                <div class="post-content">
+                    <span class="tag">Gastronomía</span>
+                    <h3>Tamales Jujeños: Receta Ancestral</h3>
+                    <p>Un clásico de la cocina andina para los días fríos.</p>
+                </div>
+            </article>
+
+            <article class="post aventura">
+                <div class="post-img-container small">
+                    <img src="../images/sandboard.webp" alt="Abra Pampa">
+                </div>
+                <div class="post-content">
+                    <span class="tag">Aventura</span>
+                    <h3>Dunas de Abra Pampa</h3>
+                    <p>Sandboard extremo en la capital del Altiplano.</p>
+                </div>
+            </article>
+        </div>
+
+        <section class="comments-section mt-5 mx-auto col-10" >
+            <div class="text-center mb-5">
+                <h2 class="display-5 fw-bold">Voces de<span class="text-turquesa">Viajeros</span></h2>
+            </div>
+            <div id="comment-list">
+                <div class="comment-small">
+                    <div class="avatar-css-small"></div>
+                    <div class="comment-body">
+                        <strong>@jujeño_viajero</strong>
+                        <p>Excelente nota sobre el Hornocal, Cristian.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="comment-small">
+                <div class="avatar-css-small user-2"></div>
+                <div class="comment-content">
+                    <strong>@astro_jujuy</strong>
+                    <p>¿Tienen datos de cuándo hay menos nubes para hacer astrofotografía en las Salinas? ¡Tremenda
+                        nota!</p>
+                </div>
+            </div>
+
+            <div class="comment-small">
+                <div class="avatar-css-small user-3"></div>
+                <div class="comment-content">
+                    <strong>@sabor_norteño</strong>
+                    <p>La humita de Humahuaca no tiene competencia, pero prueben los tamales de la feria de
+                        Purmamarca... ¡un viaje de ida!</p>
+                </div>
+            </div>
+
+            <div class="comment-small">
+                <div class="avatar-css-small user-4"></div>
+                <div class="comment-content">
+                    <strong>@valen_explora</strong>
+                    <p>Hice el trekking al Pucará la semana pasada. Recomiendo ir temprano por el sol, ¡la vista desde
+                        arriba es de otro planeta!</p>
+                </div>
+            </div>
+
+            <div class="comment-small">
+                <div class="avatar-css-small user-5"></div>
+                <div class="comment-content">
+                    <strong>@rodri_travel</strong>
+                    <p>¿Se necesita guía sí o sí para subir al Hornocal o se puede ir por cuenta propia? Muy buena la
+                        info del blog.</p>
+                </div>
+            </div>
+
+            <div class="comment-small">
+                <div class="avatar-css-small user-6"></div>
+                <div class="comment-content">
+                    <strong>@pablo_juje</strong>
+                    <p>Como jujeño viviendo afuera, leer esto me hace extrañar un montón. ¡Gracias por mostrar así mi
+                        provincia!</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <div id="footer-placeholder"></div>
+
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
+        integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.min.js"
+        integrity="sha384-G/EV+4j2dNv+tEPo3++6LCgdCROaejBqfUeNjuKAiuXbjrxilcCdDz6ZAVfHWe1Y"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn-script.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="../js/scripts.js"></script>
+    <script>
+        // Esta función carga los componentes externos
+        $(function () {
+            $("#header-placeholder").load("../components/header.html");
+            $("#footer-placeholder").load("../components/footer.html");
+        });
+    </script>
+</body>
+
+</html>

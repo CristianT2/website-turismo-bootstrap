@@ -495,3 +495,156 @@
 .table-secondary {
     --bs-table-bg: rgba(128, 128, 128, 0.1);
 }
+
+/* Estilos para la pagina de Blog */
+.blog-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+    border-top: 3px solid var(--text-color);
+    padding-top: 25px;
+}
+
+/* Configuración de celdas especiales */
+.post.featured { grid-column: span 2; grid-row: span 2; }
+.post.span-2 { grid-column: span 2; }
+.post.tall { grid-row: span 2; }
+
+.post {
+    background: var(--bg-card) !important;
+    border: 1px solid var(--border-color);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    border-radius: 8px;
+    height: 100%;
+    /* Efecto para Scroll Reveal */
+    opacity: 0;
+    transform: translateY(40px);
+    transition: all 0.5s cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+
+.post:hover {
+    transform: translateY(-8px);
+    border-color: var(--primary-color);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.12);
+    z-index: 10;
+}
+
+/* --- CONTENEDORES DE IMAGEN CON ALTURAS FIJAS --- */
+.post-img-container {
+    width: 100%;
+    overflow: hidden;
+    background-color: #000;
+    border-bottom: 1px solid var(--border-color);
+}
+
+/* Ajuste de alturas según el tipo de card */
+.post.featured .post-img-container { height: 420px; }
+.post.tall .post-img-container { height: 500px; }
+.post.span-2 .post-img-container { height: 300px; }
+.post:not(.featured):not(.tall):not(.span-2) .post-img-container { height: 220px; }
+
+.post-img-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Cubre todo el espacio sin deformar */
+    object-position: center;
+    transition: transform 0.6s ease;
+}
+
+.post:hover img {
+    transform: scale(1.08);
+}
+
+/* --- CONTENIDO DE LA CARD --- */
+.post-content {
+    padding: 25px;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+}
+
+.post h2 { font-size: 2.2rem; font-weight: 800; line-height: 1.1; margin: 10px 0; }
+.post h3 { font-size: 1.4rem; font-weight: 700; margin: 8px 0; }
+.post p { font-size: 0.95rem; line-height: 1.6; margin-bottom: 15px; flex-grow: 1; }
+
+.post .tag {
+    background: rgba(42, 157, 143, 0.1);
+    color: var(--primary-color);
+    padding: 4px 12px;
+    font-size: 0.75rem;
+    font-weight: bold;
+    border-radius: 4px;
+    width: fit-content;
+}
+
+/* ==========================================================================
+   4. SECCIÓN DE COMENTARIOS (MINI CARDS)
+   ========================================================================== */
+.comments-section {
+    margin-top: 60px;
+    padding-top: 30px;
+    border-top: 1px solid var(--border-color);
+}
+
+.comment-small {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    background: var(--bg-card);
+    padding: 15px 20px;
+    margin-bottom: 12px;
+    border-radius: 10px;
+    border: 1px solid var(--border-color);
+    transition: all 0.3s ease;
+}
+
+.comment-small:hover {
+    transform: translateX(15px);
+    border-left: 5px solid var(--primary-color);
+    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+}
+
+.avatar-css-small {
+    width: 45px;
+    height: 45px;
+    background: #88c0d0;
+    border-radius: 50%;
+    flex-shrink: 0;
+}
+
+/* Variaciones de color para avatares */
+.user-2 { filter: hue-rotate(45deg); }
+.user-3 { filter: hue-rotate(90deg); }
+.user-4 { filter: hue-rotate(180deg); }
+.user-5 { filter: hue-rotate(240deg); }
+.user-6 { filter: hue-rotate(300deg); }
+
+.comment-content strong {
+    display: block;
+    font-size: 0.9rem;
+    color: var(--primary-color);
+}
+
+.comment-content p {
+    margin: 0;
+    font-size: 0.88rem;
+    color: var(--text-color);
+}
+
+/* ==========================================================================
+   5. RESPONSIVIDAD
+   ========================================================================== */
+@media (max-width: 992px) {
+    .blog-grid { grid-template-columns: repeat(2, 1fr); }
+    .post.featured, .post.tall, .post.span-2 { grid-column: span 1; grid-row: span 1; }
+    /* Ajuste de imágenes en tablet */
+    .post-img-container { height: 250px !important; }
+}
+
+@media (max-width: 768px) {
+    .blog-grid { grid-template-columns: 1fr; }
+    .comment-small { flex-direction: row; padding: 12px; }
+}
