@@ -1,6 +1,6 @@
 <nav class="navbar navbar-expand-lg navbar-custom sticky-top shadow-lg">
     <div class="container">
-        <a class="navbar-brand d-flex align-items-center" href="index.html">
+        <a class="navbar-brand d-flex align-items-center" href="../index.html">
             <i class="bi bi-geo-alt-fill me-2 fs-1" style="color: var(--accent-naranja);"></i>
             <div class="d-flex flex-column justify-content-center">
                 <span class="fw-bold fs-2 lh-1 logo-parte-1">JUJUY<span class="logo-parte-2">TURISMO</span></span>
@@ -28,17 +28,95 @@
                 <li class="nav-item"><a class="nav-link" href="../pages/contacto.html">Contacto</a></li>
                 <li class="nav-item"><a class="nav-link" href="../pages/precios.html">Precios</a></li>
                 <li class="nav-item"><a class="nav-link" href="../pages/blog.html">Blog</a></li>
-                <li class="nav-item px-lg-2">
+
+                <li class="nav-item px-lg-1">
                     <button class="btn btn-link nav-link shadow-none" id="darkModeToggle">
-                        <i class="bi bi-moon-stars-fill text-warning fs-4" id="themeIcon"></i>
+                        <i class="bi bi-moon-stars-fill text-warning fs-5" id="themeIcon"></i>
                     </button>
                 </li>
-                <li class="nav-item ms-lg-2">
-                    <a class="btn btn-accent rounded-pill fw-bold" href="phishing.html">
-                        <i class="bi bi-shield-lock-fill me-2"></i>Simulador
-                    </a>
+                <li class="nav-item ms-lg-1">
+                    <button class="btn btn-accent rounded-pill fw-bold btn-nav-simulador" data-bs-toggle="modal"
+                        data-bs-target="#phishingModal">
+                        <i class="bi bi-shield-lock-fill me-1"></i><span>Simulador</span>
+                    </button>
                 </li>
             </ul>
         </div>
     </div>
 </nav>
+
+<div class="modal fade" id="phishingModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-centered">
+        <div class="modal-content border-0 shadow-lg">
+            <div class="modal-header bg-danger text-white">
+                <h5 class="modal-title"><i class="bi bi-shield-lock-fill me-2"></i>Módulo de Seguridad: Phishing</h5>
+                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+            </div>
+
+            <div class="modal-body p-4" style="max-height: 75vh; overflow-y: auto;">
+
+                <div class="alert alert-danger d-flex align-items-center mb-4">
+                    <i class="bi bi-exclamation-triangle-fill me-3 fs-3"></i>
+                    <div>
+                        <strong>ADVERTENCIA:</strong> Los bancos reales NUNCA solicitan claves por este medio. Hacé clic
+                        en las partes sospechosas del mail.
+                    </div>
+                </div>
+                <br>
+                <div class="phishing-mail-box border rounded shadow-sm mb-3">
+                    <div class="mail-header border-bottom mb-3">
+                        <p class="mb-1"><strong>De:</strong> <span class="suspicious-item text-danger fw-bold"
+                                data-feedback="Dominio Falso: Un banco oficial usa .com.ar. El dominio '.net' es usado por estafadores.">Banco
+                                Jujuy Soporte &lt;seguridad@banco-jujuy.net&gt;</span></p>
+                        <p class="mb-1"><strong>Para:</strong> usuario_jujuy@email.com</p>
+                        <p class="mb-1"><strong>Asunto:</strong> <span class="suspicious-item fw-bold"
+                                data-feedback="Sentido de Urgencia: El estafador quiere que actúes rápido para que no pienses ni verifiques nada.">¡URGENTE!
+                                Tu cuenta será bloqueada en 2 horas</span></p>
+                    </div>
+                    <div class="mail-body">
+                        <p>Estimado cliente,</p>
+                        <p>Hemos detectado un inicio de sesión sospechoso. Su cuenta ha sido <span
+                                class="suspicious-item text-decoration-underline"
+                                data-feedback="Mala Ortografía: Las empresas serias cuidan su redacción. 'Preventivante' es un error que delata el fraude.">suspendida
+                                preventivante</span>.</p>
+                        <p>Haga clic en el siguiente botón para reactivar su acceso:</p>
+                        <div class="text-center my-4">
+                            <button class="btn btn-primary px-5 suspicious-item"
+                                data-feedback="Botón Malicioso: Este botón te lleva a una página falsa que imita al banco para robarte.">RE-ACTIVAR
+                                CUENTA AHORA</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="phishing-feedback" class="mb-4 p-3 border rounded d-none"></div>
+
+                <div class="fraud-signs-box p-3 border rounded bg-white">
+                    <h6 class="text-uppercase fw-bold mb-3 text-dark border-bottom pb-2">Señales generales de Fraude:
+                    </h6>
+                    <div class="row text-dark">
+                        <div class="col-sm-6">
+                            <ul class="list-unstyled mb-0">
+                                <li class="mb-2"><i class="bi bi-x-circle-fill text-danger me-2"></i> Remitente con
+                                    dirección extraña.</li>
+                                <li class="mb-2"><i class="bi bi-x-circle-fill text-danger me-2"></i> Amenazas de
+                                    bloqueo inmediato.</li>
+                            </ul>
+                        </div>
+                        <div class="col-sm-6">
+                            <ul class="list-unstyled mb-0">
+                                <li class="mb-2"><i class="bi bi-x-circle-fill text-danger me-2"></i> Errores de
+                                    ortografía y gramática.</li>
+                                <li class="mb-2"><i class="bi bi-x-circle-fill text-danger me-2"></i> Links que llevan a
+                                    sitios sospechosos.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="modal-footer bg-light">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Entendido</button>
+            </div>
+        </div>
+    </div>
+</div>

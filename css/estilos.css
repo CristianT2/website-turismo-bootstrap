@@ -1,3 +1,6 @@
+/* ==========================================================================
+   1. VARIABLES Y CONFIGURACIÓN GLOBAL (Root & Themes)
+   ========================================================================== */
 :root {
   --nav-midnight: #0a192f;    
   --accent-turquesa: #2a9d8f; 
@@ -10,641 +13,443 @@
 [data-bs-theme="light"] {
   --nav-bg: var(--nav-midnight);
   --nav-link-color: #ffffff;
-  --dropdown-bg: #ffffff;
-  --dropdown-text: #0a192f;
   --body-bg: #ffffff;
 }
 
 [data-bs-theme="dark"] {
   --nav-bg: #000000;
   --nav-link-color: #f0f0f0;
-  --dropdown-bg: #1a1a1a;
-  --dropdown-text: #f0f0f0;
   --body-bg: #000000;
 }
 
-/* NAVBAR */
+/* Utilidades generales */
+.text-turquesa { color: var(--accent-turquesa) !important; }
+.bg-turquesa { background-color: var(--accent-turquesa) !important; color: white !important; }
+.tracking-widest { letter-spacing: 3px; text-transform: uppercase; }
+
+/* ==========================================================================
+   2. NAVBAR Y FOOTER (Componentes Globales)
+   ========================================================================== */
 .navbar-custom {
   background-color: var(--nav-bg) !important;
   min-height: var(--nav-height);
   border-bottom: 4px solid var(--accent-naranja);
-  display: flex;
-  align-items: center;
-  transition: all 0.4s ease;
+  display: flex; align-items: center;
 }
 
 .navbar-custom .nav-link {
   color: var(--nav-link-color) !important;
-  font-weight: 600;
-  font-size: 1.1rem;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-  transition: var(--transition-smooth);
+  font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px; /* Bajé un poco el spacing */
+  padding: 0.5rem 0.8rem !important; /* Padding controlado */
+  display: flex; align-items: center;
+  transition: color 0.3s ease;
 }
 
-.navbar-custom .nav-link:hover,
+/* FIX: Evitar que el link activo o el hover "salte" hacia arriba */
+.navbar-custom .nav-link:hover, 
 .navbar-custom .nav-link.active {
   color: var(--accent-turquesa) !important;
-  transform: translateY(-3px);
+  transform: none !important; /* Eliminamos el translateY que lo subía */
+  border-bottom: 2px solid var(--accent-turquesa); /* Marcamos el activo con línea en vez de movimiento */
 }
 
+/* BOTÓN SIMULADOR: Ajuste dinámico de tamaño */
+.btn-nav-simulador {
+    white-space: nowrap;
+    font-size: 0.9rem; /* Un poco más chico por defecto */
+    padding: 8px 16px !important;
+}
+
+
+/* Media Query específica para el rango de conflicto */
+@media (min-width: 992px) and (max-width: 1200px) {
+    .navbar-custom .nav-link {
+        font-size: 0.85rem !important; /* Achicamos la letra del menú */
+        padding: 0.5rem 0.5rem !important;
+    }
+    
+    .btn-nav-simulador {
+        padding: 6px 12px !important;
+        font-size: 0.8rem;
+    }
+
+    .btn-nav-simulador i { font-size: 0.9rem; }
+    .btn-nav-simulador span { display: inline; } /* O podés poner 'none' si querés solo el icono en este rango */
+}
+
+/* Ajuste del logo para que no empuje todo */
+.navbar-brand .bi-geo-alt-fill {
+    font-size: 2.5rem !important;
+}
+
+/* Logos y Navbar Toggler */
 .logo-parte-1 { color: #ffffff; }
 .logo-parte-2 { color: var(--accent-turquesa); }
 .logo-sub { color: var(--accent-naranja); }
 
-.btn-accent {
-  background-color: var(--btn-warning) !important;
-  color: #0a192f !important;
-  border: none;
-  font-weight: 800 !important;
-  box-shadow: 0 4px 15px rgba(255, 183, 3, 0.4);
-  transition: var(--transition-smooth);
-}
+[data-bs-theme="light"] .navbar-toggler-icon { filter: invert(1); }
+[data-bs-theme="dark"] .navbar-toggler-icon { filter: invert(53%) sepia(88%) saturate(352%) hue-rotate(125deg) brightness(91%) contrast(85%); }
 
-.btn-accent:hover {
-  transform: scale(1.05);
-  background-color: #ffca2c !important;
-}
-
-[data-bs-theme="light"] .navbar-toggler-icon {
-    filter: invert(1); 
-}
-
-[data-bs-theme="dark"] .navbar-toggler-icon {
-    filter: invert(53%) sepia(88%) saturate(352%) hue-rotate(125deg) brightness(91%) contrast(85%);
-}
-
-.navbar-toggler:focus {
-    outline: none;
-    box-shadow: none;
-}
-
-/* HERO SECTION */
-.hero-section {
-    min-height: 60vh;
-}
-
-@media (min-width: 992px) {
-    .hero-section { min-height: 85vh; }
-}
-
-#hero-title, #hero-subtitle {
-    text-shadow: 2px 4px 12px rgba(0, 0, 0, 0.9);
-}
-
-/* COMPONENTES Y CARDS */
-.text-turquesa { color: var(--accent-turquesa) !important; }
-.bg-turquesa { background-color: var(--accent-turquesa) !important; }
-.text-light-muted { color: #b2bec3; }
-.tracking-widest { letter-spacing: 3px; text-transform: uppercase; }
-
-.card-hover {
-    transition: var(--transition-smooth);
-}
-
-.card-hover:hover {
-    transform: translateY(-10px);
-    box-shadow: 0 15px 30px rgba(0,0,0,0.2) !important;
-}
-
-.img-zoom {
-    transition: transform 0.6s ease;
-}
-
-.card-hover:hover .img-zoom {
-    transform: scale(1.1);
-}
-
-.btn-outline-turquesa {
-    color: var(--accent-turquesa);
-    border-color: var(--accent-turquesa);
-    transition: var(--transition-smooth);
-}
-
-.btn-outline-turquesa:hover {
-    background-color: var(--accent-turquesa);
-    color: white;
-}
-
-/* CARRUSEL */
-.custom-carousel-btn {
-    width: 50px;
-    height: 50px;
-    background-color: rgba(0, 0, 0, 0.3);
-    border-radius: 50%;
-    border: none;
-    transition: var(--transition-smooth);
-}
-
-.custom-carousel-btn:hover {
-    background-color: var(--accent-turquesa);
-}
-
-[data-bs-theme="light"] .carousel-control-prev-icon,
-[data-bs-theme="light"] .carousel-control-next-icon {
-    filter: invert(1);
-}
-
-/* FOOTER */
+/* Footer y Redes Sociales (Sprites) */
 .footer-custom {
   background-color: var(--nav-midnight) !important;
-  color: #ffffff;
-  border-top: 4px solid var(--accent-naranja);
+  color: #ffffff; border-top: 4px solid var(--accent-naranja);
 }
-
-[data-bs-theme="dark"] .footer-custom {
-  background-color: #000000 !important;
-}
-
-.btn-accent-footer {
-  background-color: var(--accent-turquesa);
-  color: white;
-  border: none;
-  font-weight: bold;
-  transition: var(--transition-smooth);
-}
-
-.btn-accent-footer:hover {
-  background-color: var(--accent-naranja);
-  color: white;
-}
-
-/* SPRITE CSS */
-.social-sprite-container {
-  display: flex;
-  gap: 20px;
-}
+[data-bs-theme="dark"] .footer-custom { background-color: #000000 !important; }
 
 .sprite-icon {
-  width: 50px;
-  height: 50px;
-  background-image: url('../images/logos.png');
-  background-size: 150px 50px;
-  background-repeat: no-repeat;
-  display: inline-block;
-  transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  width: 50px; height: 50px; background-image: url('../images/logos.png');
+  background-size: 150px 50px; display: inline-block; transition: var(--transition-smooth);
 }
-
-.sprite-icon:hover {
-  transform: translateY(-8px) rotate(5deg);
-  filter: drop-shadow(0 4px 10px rgba(0,0,0,0.3));
-}
-
+.sprite-icon:hover { transform: translateY(-8px) rotate(5deg); filter: drop-shadow(0 4px 10px rgba(0,0,0,0.3)); }
 .icon-fb { background-position: 0px 0px; }
 .icon-tw { background-position: -50px 0px; }
 .icon-ig { background-position: -100px 0px; }
 
-/* Estilos Pagina Destinos*/
-/* GRID MASONRY */
+/* ==========================================================================
+   3. BOTONES (Unificados)
+   ========================================================================== */
+.btn-accent, .btn-turquesa, .btn-accent-footer {
+  border: none; font-weight: 800 !important; border-radius: 50px;
+  transition: var(--transition-smooth); padding: 10px 25px;
+}
+
+.btn-accent { 
+  background-color: var(--btn-warning) !important; color: var(--nav-midnight) !important;
+  box-shadow: 0 4px 15px rgba(255, 183, 3, 0.4); 
+}
+.btn-accent:hover { transform: scale(1.05); background-color: #ffca2c !important; }
+
+.btn-turquesa, .btn-accent-footer { background-color: var(--accent-turquesa); color: white; }
+.btn-turquesa:hover { background-color: #21867a; transform: translateY(-2px); color: white; }
+
+.btn-outline-turquesa {
+    color: var(--accent-turquesa); border-color: var(--accent-turquesa);
+    transition: var(--transition-smooth); border-radius: 50px;
+}
+.btn-outline-turquesa:hover { background-color: var(--accent-turquesa); color: white; }
+
+/* ==========================================================================
+   4. PÁGINA: INDEX (Hero y Cards)
+   ========================================================================== */
+.hero-section { min-height: 60vh; }
+@media (min-width: 992px) { .hero-section { min-height: 85vh; } }
+#hero-title, #hero-subtitle { text-shadow: 2px 4px 12px rgba(0, 0, 0, 0.9); }
+
+.card-hover { transition: var(--transition-smooth); border-radius: 15px; }
+.card-hover:hover { transform: translateY(-10px); box-shadow: 0 15px 30px rgba(0,0,0,0.2) !important; }
+.img-zoom { transition: transform 0.6s ease; }
+.card-hover:hover .img-zoom { transform: scale(1.1); }
+
+/* ==========================================================================
+   5. PÁGINA: DESTINOS (Masonry Grid)
+   ========================================================================== */
 .masonry-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-    grid-auto-rows: 200px;
-    grid-gap: 15px;
-    grid-auto-flow: dense;
+    display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    grid-auto-rows: 200px; grid-gap: 15px; grid-auto-flow: dense;
 }
-
-.dest-card {
-    position: relative;
-    overflow: hidden;
-    border-radius: 15px;
-    background: #000;
-}
-
+.dest-card { position: relative; overflow: hidden; border-radius: 15px; background: #000; }
 .dest-card.tall { grid-row: span 2; }
 .dest-card.wide { grid-column: span 2; }
+.dest-card img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.8s ease; }
+
+.dest-overlay {
+    position: absolute; bottom: 0; left: 0; right: 0; padding: 20px;
+    background: linear-gradient(transparent, rgba(0,0,0,0.85));
+    color: white; transform: translateY(100%); transition: var(--transition-smooth);
+}
+.dest-card:hover .dest-overlay { transform: translateY(0); }
+
+/* ==========================================================================
+   6. PÁGINA: AGENCIAS (Flip Cards)
+   ========================================================================== */
+.agencias-grid { 
+    display: grid; 
+    /* Definimos la grilla: 3 columnas por defecto */
+    grid-template-columns: repeat(3, 1fr); 
+    gap: 30px; 
+    padding: 20px 0;
+}
+
+/* --- RESPONSIVIDAD DE LA GRILLA --- */
+@media (max-width: 1100px) {
+    .agencias-grid { grid-template-columns: repeat(2, 1fr); } /* 2 columnas en tablets */
+}
 
 @media (max-width: 768px) {
-    .dest-card.wide { grid-column: span 1; }
+    .agencias-grid { grid-template-columns: 1fr; } /* 1 columna en móviles */
 }
 
-.dest-card img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    display: block;
-    transition: transform 0.8s ease;
-}
-
-/* OVERLAY TEXTO */
-.dest-overlay {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    background: linear-gradient(transparent, rgba(0,0,0,0.85));
-    color: white;
-    padding: 20px;
-    transform: translateY(100%);
-    transition: var(--transition-smooth);
-}
-
-.dest-card:hover .dest-overlay {
-    transform: translateY(0);
-}
-
-/* TABLA PERSONALIZADA */
-.table {
-    border-collapse: separate;
-    border-spacing: 0;
-}
-
-.table thead th {
-    border: none;
-    text-transform: uppercase;
-    font-size: 0.85rem;
-    letter-spacing: 1px;
-}
-
-.table tbody tr {
-    transition: var(--transition-smooth);
-}
-
-.table-hover tbody tr:hover {
-    background-color: rgba(42, 157, 143, 0.05);
-}
-
-/* --- PUNTO 3: AGENCIAS --- */
-.agencias-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 30px;
-    padding: 20px 0;
-    max-width: 1200px;
-    margin: 0 auto;
-}
-
-@media (min-width: 1200px) {
-    .agencias-grid {
-        grid-template-columns: repeat(3, 1fr);
-    }
-}
-
-.flip-card {
-    background-color: transparent;
-    height: 480px;
-    perspective: 1000px;
+.flip-card { 
+    background-color: transparent; 
+    height: 460px; 
+    perspective: 1000px; 
 }
 
 .flip-card-inner {
-    position: relative;
-    width: 100%;
+    position: relative; 
+    width: 100%; 
     height: 100%;
-    transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+    transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1); 
     transform-style: preserve-3d;
+    border-radius: 15px;
 }
 
-.flip-card.is-flipped .flip-card-inner {
-    transform: rotateY(180deg);
-}
+.flip-card.is-flipped .flip-card-inner { transform: rotateY(180deg); }
 
 .flip-card-front, .flip-card-back {
-    position: absolute;
-    width: 100%;
+    position: absolute; 
+    width: 100%; 
     height: 100%;
-    -webkit-backface-visibility: hidden;
-    backface-visibility: hidden;
-    border-radius: 15px;
+    -webkit-backface-visibility: hidden; 
+    backface-visibility: hidden; 
+    border-radius: 15px; 
     overflow: hidden;
-    border: 1px solid rgba(128, 128, 128, 0.3);
-    box-shadow: 0 10px 20px rgba(0,0,0,0.15);
-}
-
-.flip-card-front {
-    background-color: var(--bs-tertiary-bg);
     display: flex;
     flex-direction: column;
+    border: 1px solid rgba(128, 128, 128, 0.2);
 }
 
-[data-bs-theme="dark"] .flip-card-front,
-[data-bs-theme="dark"] .flip-card-back {
-    border: 1px solid rgba(255, 255, 255, 0.15);
-}
-
+/* --- ARREGLO DE IMÁGENES IGUALES --- */
 .card-img-wrapper {
     width: 100%;
-    height: 250px;
+    /* Forzamos a que todas las fotos ocupen el mismo espacio */
+    aspect-ratio: 4 / 3; 
     overflow: hidden;
+    background-color: #000;
 }
 
 .card-img-wrapper img {
     width: 100%;
     height: 100%;
-    object-fit: cover;
+    object-fit: cover; /* Recorta la imagen para que no se deforme */
+    display: block;
 }
 
 .card-content-front {
     padding: 20px;
     text-align: center;
-}
-
-.card-content-front h3 {
-    font-size: 1.3rem;
-    font-weight: 700;
-}
-
-.badge-custom {
-    background-color: #2a9d8f;
-    color: white;
-    padding: 4px 12px;
-    border-radius: 20px;
-    font-size: 0.75rem;
-    font-weight: bold;
-}
-
-.flip-card-back {
-    background-color: #1a1a1a;
-    color: white;
-    transform: rotateY(180deg);
+    flex-grow: 1;
     display: flex;
     flex-direction: column;
     justify-content: center;
-    align-items: center;
-    padding: 25px;
+    background-color: var(--bs-tertiary-bg);
+}
+
+/* CARA TRASERA */
+.flip-card-back {
+    background-color: #1a1a1a; 
+    color: white; 
+    transform: rotateY(180deg);
+    justify-content: center; 
+    align-items: center; 
+    padding: 30px;
     text-align: center;
+    border: 2px solid var(--accent-turquesa); /* Resalte en Dark Mode */
 }
 
-.flip-card-back h3 {
-    color: #2a9d8f;
+.flip-card-back * { color: white !important; }
+.flip-card-back h3 { color: var(--accent-turquesa) !important; }
+
+/* Estrellas */
+.star { 
+    font-size: 2rem; 
+    color: #444; 
+    cursor: pointer; 
+}
+.star.active-star, .star.hover-star { color: #ffc107 !important; }
+
+/* ==========================================================================
+   7. PÁGINA: CONTACTO (Formulario)
+   ========================================================================== */
+.contact-card { 
+    border-radius: 20px; 
+    transition: var(--transition-smooth); 
+    padding: 30px; 
+    border: 1px solid rgba(128,128,128,0.2); 
 }
 
-.star {
-    font-size: 2.2rem;
-    color: #444;
-    cursor: pointer;
+[data-bs-theme="light"] .contact-card { 
+    background-color: #ffffff; 
+    box-shadow: 0 15px 35px rgba(0,0,0,0.1); 
 }
 
-.star.active-star, 
-.star.hover-star {
-    color: #ffc107 !important;
+[data-bs-theme="dark"] .contact-card { 
+    background-color: #1e2125; 
+    box-shadow: 0 15px 35px rgba(0,0,0,0.4); 
 }
 
-.btn-accent {
-    background-color: #2a9d8f;
-    color: white;
-    border: none;
-    padding: 10px 25px;
-    border-radius: 50px;
-    font-weight: bold;
-    margin-top: 15px;
-}
-
-/* --- ESTILOS DEL FORMULARIO --- */
-.contact-card {
-    border-radius: 20px;
-    transition: all 0.3s ease;
-    border: 1px solid rgba(128, 128, 128, 0.2);
-}
-
-/* Ajuste para MODO CLARO */
-[data-bs-theme="light"] .contact-card {
-    background-color: #ffffff; /* Blanco puro sobre fondo grisáceo */
-    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
-}
-
-/* Ajuste para MODO OSCURO */
-[data-bs-theme="dark"] .contact-card {
-    background-color: #1e2125; /* Gris más claro que el fondo negro de Fedora */
-    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-}
-
-/* Estilo de los inputs para que no se pierdan */
+/* Estilo base para Inputs y Selects */
 .form-control, .form-select {
-    background-color: var(--bs-body-bg);
-    border: 1px solid rgba(128, 128, 128, 0.4);
+    background-color: transparent; 
+    border: 1px solid rgba(128,128,128,0.4);
+    color: inherit; /* Hereda el color del texto del tema */
 }
 
-/* Color del botón Turquesa */
-.btn-turquesa {
-    background-color: #2a9d8f;
-    color: white;
-    border: none;
-    font-weight: 600;
+/* FIX ESPECÍFICO PARA LAS OPCIONES DEL SELECT EN MODO OSCURO */
+[data-bs-theme="dark"] .form-select option {
+    background-color: #1e2125; /* El mismo gris de la card */
+    color: #ffffff; /* Letra blanca forzada */
 }
 
-.btn-turquesa:hover {
-    background-color: #21867a;
-    color: white;
-    transform: translateY(-2px);
+/* Para evitar el fondo blanco feo que pone Chrome a veces al seleccionar */
+.form-control:focus, .form-select:focus {
+    border-color: var(--accent-turquesa);
+    box-shadow: 0 0 0 0.25rem rgba(42, 157, 143, 0.25);
+    background-color: transparent;
+    color: inherit;
 }
 
-/* Estilos para Tabla de Precios Punto 5 */
-.bg-turquesa { 
-    background-color: #2a9d8f !important; 
-    color: white !important; 
+/* Si el select queda con texto negro en modo oscuro antes de abrirlo */
+[data-bs-theme="dark"] .form-select {
+    color: #f0f0f0 !important;
 }
 
-.text-turquesa { 
-    color: #2a9d8f !important; 
+/* ==========================================================================
+   8. PÁGINA: Precios (Tabla de Precios)
+   ========================================================================== */
+
+.table-responsive::-webkit-scrollbar { height: 8px; }
+.table-responsive::-webkit-scrollbar-thumb { background: var(--accent-turquesa); border-radius: 10px; }
+
+/* Resalte de la columna activa */
+.columna-activa { 
+    background-color: rgba(42, 157, 143, 0.12) !important; 
+    position: relative;
 }
 
-.columna-activa {
-    background-color: rgba(42, 157, 143, 0.12) !important;
+/* --- RECUPERACIÓN DEL HOVER --- */
+.table tbody tr {
     transition: background-color 0.2s ease;
 }
 
-[data-bs-theme="dark"] .columna-activa {
-    color: #ffffff !important;
+/* Hover para Modo Claro */
+[data-bs-theme="light"] .table-hover tbody tr:hover {
+    background-color: rgba(0, 0, 0, 0.04) !important;
 }
 
-[data-bs-theme="dark"] .columna-activa .text-turquesa {
-    color: #2a9d8f !important;
+/* Hover para Modo Oscuro */
+[data-bs-theme="dark"] .table-hover tbody tr:hover {
+    background-color: rgba(255, 255, 255, 0.1) !important;
 }
 
-.table-dark th {
-    color: white !important;
+/* Caso especial: Hover cuando la fila cruza la columna activa */
+.table-hover tbody tr:hover .columna-activa {
+    background-color: rgba(42, 157, 143, 0.25) !important;
+    color: var(--accent-turquesa) !important;
 }
 
-.columna-activa .btn-outline-info,
-.columna-activa .btn-outline-warning {
-    background-color: transparent !important;
-}
-
-[data-bs-theme="dark"] .btn-outline-info { 
-    color: #0dcaf0; 
-    border-color: #0dcaf0; 
-}
-
-[data-bs-theme="dark"] .btn-outline-warning { 
-    color: #ffc107; 
-    border-color: #ffc107; 
-}
-
-.table-responsive {
-    overflow-x: auto;
-    -webkit-overflow-scrolling: touch;
-}
-
-.table-responsive::-webkit-scrollbar { 
-    height: 8px; 
-}
-
-.table-responsive::-webkit-scrollbar-thumb {
-    background: #2a9d8f;
-    border-radius: 10px;
-}
-
+/* Estilo de los Tooltips (se mantiene como estaba) */
 .tooltip-inner {
-    background-color: #2a9d8f !important;
+    background-color: var(--accent-turquesa) !important;
     font-weight: 500;
     padding: 10px;
     border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
 }
 
-.table-secondary {
-    --bs-table-bg: rgba(128, 128, 128, 0.1);
+/* ==========================================================================
+   9. PÁGINA: BLOG (Grilla y Comentarios)
+   ========================================================================== */
+.blog-grid { 
+    display: grid; 
+    grid-template-columns: repeat(3, 1fr); 
+    gap: 30px; 
+    padding-top: 25px; 
 }
-
-/* Estilos para la pagina de Blog */
-.blog-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 30px;
-    border-top: 3px solid var(--text-color);
-    padding-top: 25px;
-}
-
-/* Configuración de celdas especiales */
-.post.featured { grid-column: span 2; grid-row: span 2; }
-.post.span-2 { grid-column: span 2; }
-.post.tall { grid-row: span 2; }
 
 .post {
-    background: var(--bg-card) !important;
-    border: 1px solid var(--border-color);
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
-    display: flex;
-    flex-direction: column;
-    overflow: hidden;
-    border-radius: 8px;
-    height: 100%;
-    /* Efecto para Scroll Reveal */
-    opacity: 0;
-    transform: translateY(40px);
-    transition: all 0.5s cubic-bezier(0.165, 0.84, 0.44, 1);
+    background: var(--bs-tertiary-bg); 
+    border: 1px solid rgba(128,128,128,0.2);
+    display: flex; 
+    flex-direction: column; /* Alineación vertical */
+    height: 100%; /* Obliga a todas las cards a medir lo mismo en la misma fila */
+    overflow: hidden; 
+    border-radius: 12px;
+    opacity: 0; 
+    transform: translateY(40px); 
+    transition: all 0.5s ease;
 }
 
-.post:hover {
-    transform: translateY(-8px);
-    border-color: var(--primary-color);
-    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.12);
-    z-index: 10;
-}
-
-/* --- CONTENEDORES DE IMAGEN CON ALTURAS FIJAS --- */
-.post-img-container {
-    width: 100%;
-    overflow: hidden;
-    background-color: #000;
-    border-bottom: 1px solid var(--border-color);
-}
-
-/* Ajuste de alturas según el tipo de card */
-.post.featured .post-img-container { height: 420px; }
-.post.tall .post-img-container { height: 500px; }
-.post.span-2 .post-img-container { height: 300px; }
-.post:not(.featured):not(.tall):not(.span-2) .post-img-container { height: 220px; }
-
-.post-img-container img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover; /* Cubre todo el espacio sin deformar */
-    object-position: center;
+/* Imagen fija para que no haya saltos */
+.post img { 
+    width: 100%; 
+    aspect-ratio: 16 / 9; /* Mantiene la proporción siempre igual */
+    object-fit: cover; /* Recorta la imagen para que llene el espacio sin deformarse */
     transition: transform 0.6s ease;
 }
 
-.post:hover img {
-    transform: scale(1.08);
+.post:hover { 
+    transform: translateY(-8px); 
+    border-color: var(--accent-turquesa); 
+    box-shadow: 0 15px 35px rgba(0,0,0,0.12); 
 }
 
-/* --- CONTENIDO DE LA CARD --- */
+.post:hover img { transform: scale(1.1); }
+
+/* Contenido de la Card */
 .post-content {
-    padding: 25px;
+    padding: 20px;
     display: flex;
     flex-direction: column;
-    flex-grow: 1;
+    flex-grow: 1; /* Hace que esta sección ocupe todo el espacio sobrante */
 }
 
-.post h2 { font-size: 2.2rem; font-weight: 800; line-height: 1.1; margin: 10px 0; }
-.post h3 { font-size: 1.4rem; font-weight: 700; margin: 8px 0; }
-.post p { font-size: 0.95rem; line-height: 1.6; margin-bottom: 15px; flex-grow: 1; }
-
-.post .tag {
-    background: rgba(42, 157, 143, 0.1);
-    color: var(--primary-color);
-    padding: 4px 12px;
-    font-size: 0.75rem;
-    font-weight: bold;
-    border-radius: 4px;
-    width: fit-content;
-}
-
-/* ==========================================================================
-   4. SECCIÓN DE COMENTARIOS (MINI CARDS)
-   ========================================================================== */
-.comments-section {
-    margin-top: 60px;
-    padding-top: 30px;
-    border-top: 1px solid var(--border-color);
-}
-
-.comment-small {
-    display: flex;
-    align-items: center;
-    gap: 15px;
-    background: var(--bg-card);
-    padding: 15px 20px;
+.post-content h3 {
+    font-size: 1.25rem;
     margin-bottom: 12px;
-    border-radius: 10px;
-    border: 1px solid var(--border-color);
-    transition: all 0.3s ease;
+    min-height: 3rem; /* Reserva espacio para 2 líneas de título */
 }
 
-.comment-small:hover {
-    transform: translateX(15px);
-    border-left: 5px solid var(--primary-color);
-    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+.post-content p {
+    font-size: 0.95rem;
+    color: #666;
+    flex-grow: 1; /* Empuja el botón o el tag hacia abajo del todo */
 }
 
-.avatar-css-small {
-    width: 45px;
-    height: 45px;
-    background: #88c0d0;
-    border-radius: 50%;
-    flex-shrink: 0;
-}
+[data-bs-theme="dark"] .post-content p { color: #b2bec3; }
 
-/* Variaciones de color para avatares */
-.user-2 { filter: hue-rotate(45deg); }
-.user-3 { filter: hue-rotate(90deg); }
-.user-4 { filter: hue-rotate(180deg); }
-.user-5 { filter: hue-rotate(240deg); }
-.user-6 { filter: hue-rotate(300deg); }
+/* Casos especiales */
+.post.featured { grid-column: span 2; grid-row: span 2; }
+.post.featured img { aspect-ratio: 21 / 9; } /* Imagen más ancha para el destacado */
 
-.comment-content strong {
-    display: block;
-    font-size: 0.9rem;
-    color: var(--primary-color);
+/* Comentarios (Mantener igual) */
+.comment-small {
+    display: flex; align-items: center; gap: 15px; background: var(--bs-tertiary-bg);
+    padding: 15px; margin-bottom: 12px; border-radius: 10px; transition: all 0.3s;
 }
-
-.comment-content p {
-    margin: 0;
-    font-size: 0.88rem;
-    color: var(--text-color);
-}
+.comment-small:hover { transform: translateX(15px); border-left: 5px solid var(--accent-turquesa); }
+.avatar-css-small { width: 45px; height: 45px; background: #88c0d0; border-radius: 50%; flex-shrink: 0; }
 
 /* ==========================================================================
-   5. RESPONSIVIDAD
+   10. MODAL PHISHING (Protección Anti-Modo Oscuro)
+   ========================================================================== */
+.phishing-mail-box, .fraud-signs-box, #phishing-feedback.alert-info {
+    background-color: #ffffff !important; border: 1px solid #dee2e6;
+}
+.phishing-mail-box *, .fraud-signs-box *, #phishing-feedback * { color: #1a1a1a !important; }
+
+.mail-header {
+    background-color: #f8f9fa !important; padding: 15px;
+    margin: -20px -20px 15px -20px; border-radius: 8px 8px 0 0;
+}
+.suspicious-item { cursor: pointer; border-bottom: 1px dashed #ccc; transition: all 0.3s; }
+.suspicious-item:hover { background-color: #fff3cd !important; }
+.item-detected { background-color: #d1e7dd !important; color: #0a3622 !important; font-weight: bold; }
+
+.modal-body::-webkit-scrollbar { width: 8px; }
+.modal-body::-webkit-scrollbar-thumb { background: #c1c1c1; border-radius: 10px; }
+
+/* ==========================================================================
+   11. RESPONSIVIDAD (Media Queries Finales)
    ========================================================================== */
 @media (max-width: 992px) {
     .blog-grid { grid-template-columns: repeat(2, 1fr); }
-    .post.featured, .post.tall, .post.span-2 { grid-column: span 1; grid-row: span 1; }
-    /* Ajuste de imágenes en tablet */
-    .post-img-container { height: 250px !important; }
+    .post.featured { grid-column: span 1; grid-row: span 1; }
 }
 
 @media (max-width: 768px) {
     .blog-grid { grid-template-columns: 1fr; }
-    .comment-small { flex-direction: row; padding: 12px; }
+    .dest-card.wide { grid-column: span 1; }
+    .agencias-grid { grid-template-columns: 1fr; }
 }

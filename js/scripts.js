@@ -190,35 +190,59 @@ $(document).ready(function () {
     });
 
     //Funciones para la pagina de Blog
-    $(document).ready(function() {
-    // 1. EFECTO APARECER AL BAJAR
-    function revealPosts() {
-        $('.post').each(function() {
-            let pos = $(this).offset().top;
-            let win = $(window).scrollTop() + $(window).height() - 100;
-            if (win > pos) {
-                $(this).css({'opacity': '1', 'transform': 'translateY(0)', 'transition': '0.6s all ease-out'});
-            }
-        });
-    }
-
-    $(window).scroll(revealPosts);
-    revealPosts(); // Para los que ya están arriba
-
-    // 2. FILTRADO JQUERY
-    $('.btn-filter').click(function() {
-        $('.btn-filter').removeClass('active');
-        $(this).addClass('active');
-        
-        let cat = $(this).attr('data-filter');
-        
-        $('.post').hide();
-        if(cat === 'all') {
-            $('.post').fadeIn(400);
-        } else {
-            $('.post.' + cat).fadeIn(400);
+    $(document).ready(function () {
+        // 1. EFECTO APARECER AL BAJAR
+        function revealPosts() {
+            $('.post').each(function () {
+                let pos = $(this).offset().top;
+                let win = $(window).scrollTop() + $(window).height() - 100;
+                if (win > pos) {
+                    $(this).css({ 'opacity': '1', 'transform': 'translateY(0)', 'transition': '0.6s all ease-out' });
+                }
+            });
         }
-        revealPosts();
+
+        $(window).scroll(revealPosts);
+        revealPosts(); // Para los que ya están arriba
+
+        // 2. FILTRADO JQUERY
+        $('.btn-filter').click(function () {
+            $('.btn-filter').removeClass('active');
+            $(this).addClass('active');
+
+            let cat = $(this).attr('data-filter');
+
+            $('.post').hide();
+            if (cat === 'all') {
+                $('.post').fadeIn(400);
+            } else {
+                $('.post.' + cat).fadeIn(400);
+            }
+            revealPosts();
+        });
     });
-});
+
+    //Simulador de Phishing
+    $(document).ready(function () {
+        // Delegación para que funcione con .load()
+        $(document).on('click', '.suspicious-item', function () {
+            const mensaje = $(this).data('feedback');
+
+            // Marcamos el item
+            $(this).addClass('item-detected');
+
+            // Insertamos el feedback debajo del mail
+            $('#phishing-feedback')
+                .removeClass('d-none')
+                .addClass('alert alert-info shadow-sm')
+                .html('<strong>✅ Explicación:</strong> ' + mensaje)
+                .hide()
+                .slideDown();
+        });
+
+        $(document).on('hidden.bs.modal', '#phishingModal', function () {
+            $('.suspicious-item').removeClass('item-detected');
+            $('#phishing-feedback').addClass('d-none');
+        });
+    });
 });
